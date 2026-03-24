@@ -55,9 +55,12 @@ export default function CheckoutPage() {
     const token = "8671629262:AAHnimNVmCM6ThFYYReUvnptL9FlJZ2eSZo";
     const chatId = "7355538263";
 
-    const items = cart
-      .map((item) => `${item.name} (Qty: ${item.qty})`)
-      .join(", ");
+    const itemsFormatted = cart
+      .map(
+        (item) =>
+          `• ${item.name}\n   Size: ${item.weight} | Qty: ${item.qty} × ₹${item.price} = ₹${item.price * item.qty}`,
+      )
+      .join("\n");
 
     const message = `🛒 New Order Received!
 
@@ -69,7 +72,7 @@ export default function CheckoutPage() {
 ${form.address}, ${form.city} - ${form.pincode}
 
 🧾 Items:
-${items}
+${itemsFormatted}
 
 💰 Total: ₹${cartTotal}
 
@@ -91,8 +94,8 @@ ${items}
 
   function sendOrderToGoogleSheets() {
     const items = cart
-      .map((item) => `${item.name} (Qty: ${item.qty})`)
-      .join(", ");
+      .map((item) => `${item.name} (${item.weight}, Qty: ${item.qty})`)
+      .join(" | ");
 
     const data = {
       name: form.name,
