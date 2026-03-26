@@ -10,10 +10,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
@@ -24,7 +24,7 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Show dist (debug)
+      - name: Verify dist folder
         run: ls -la dist
 
       - name: Deploy via FTP
