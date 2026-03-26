@@ -283,7 +283,6 @@ const styles = {
     borderColor: "var(--deep)",
     opacity: 0.7,
   },
-  },
   priceRow: { display: "flex", alignItems: "baseline", gap: "0.8rem" },
   price: {
     fontFamily: "'Cinzel Decorative', serif",
