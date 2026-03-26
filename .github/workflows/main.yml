@@ -19,10 +19,13 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      - name: Build project (Vite fix)
-        run: npx vite build
+      - name: Fix permissions
+        run: chmod +x node_modules/.bin/vite
+
+      - name: Build project
+        run: npm run build
 
       - name: Verify dist folder
         run: ls -la dist
